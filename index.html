@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Data Deletion Request - Vimukti Sanstha</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+        }
+
+
+        :root {
+
+            --dark-green: #1a472a;
+
+            --medium-green: #2d5a3c;
+
+            --light-green: #3c6e4a;
+
+            --orange: #e67e22;
+
+            --light-orange: #f39c12;
+
+            --light-gray: #f5f5f5;
+
+            --dark-gray: #333;
+
+            --text-light: #ffffff;
+
+            --text-dark: #2c3e50;
+
+        }
+
+
+        body {
+
+            background-color: #f9f9f9;
+
+            color: var(--text-dark);
+
+            line-height: 1.6;
+
+        }
+
+
+        /* Header Styles */
+
+        header {
+
+            background: linear-gradient(to right, var(--dark-green), var(--medium-green));
+
+            color: var(--text-light);
+
+            padding: 1.5rem 2rem;
+
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 100;
+
+        }
+
+
+        .header-container {
+
+            max-width: 1200px;
+
+            margin: 0 auto;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+        }
+
+
+        .logo {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+        }
+
+
+        .logo i {
+
+            font-size: 2.2rem;
+
+            color: var(--orange);
+
+        }
+
+
+        .logo h1 {
+
+            font-size: 1.8rem;
+
+            font-weight: 700;
+
+        }
+
+
+        .logo span {
+
+            color: var(--orange);
+
+        }
+
+
+        .nav-links {
+
+            display: flex;
+
+            gap: 25px;
+
+        }
+
+
+        .nav-links a {
+
+            color: var(--text-light);
+
+            text-decoration: none;
+
+            font-weight: 500;
+
+            transition: color 0.3s;
+
+            font-size: 1rem;
+
+        }
+
+
+        .nav-links a:hover {
+
+            color: var(--orange);
+
+        }
+
+
+        /* Main Content */
+
+        .container {
+
+            max-width: 1100px;
+
+            margin: 2rem auto;
+
+            padding: 0 20px;
+
+        }
+
+
+        .page-title {
+
+            text-align: center;
+
+            margin-bottom: 2.5rem;
+
+            color: var(--dark-green);
+
+            position: relative;
+
+            padding-bottom: 15px;
+
+        }
+
+
+        .page-title:after {
+
+            content: '';
+
+            position: absolute;
+
+            width: 100px;
+
+            height: 4px;
+
+            background: var(--orange);
+
+            bottom: 0;
+
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            border-radius: 2px;
+
+        }
+
+
+        .card {
+
+            background-color: white;
+
+            border-radius: 10px;
+
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+
+            margin-bottom: 2rem;
+
+            overflow: hidden;
+
+            transition: transform 0.3s, box-shadow 0.3s;
+
+        }
+
+
+        .card:hover {
+
+            transform: translateY(-5px);
+
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+
+        }
+
+
+        .card-header {
+
+            background: linear-gradient(to right, var(--medium-green), var(--light-green));
+
+            color: white;
+
+            padding: 1.2rem 1.5rem;
+
+            font-size: 1.4rem;
+
+            font-weight: 600;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+        }
+
+
+        .card-header i {
+
+            color: var(--orange);
+
+        }
+
+
+        .card-content {
+
+            padding: 1.8rem;
+
+        }
+
+
+        /* Steps */
+
+        .steps-container {
+
+            counter-reset: step-counter;
+
+        }
+
+
+        .step {
+
+            display: flex;
+
+            margin-bottom: 1.5rem;
+
+            align-items: flex-start;
+
+        }
+
+
+        .step-number {
+
+            background-color: var(--orange);
+
+            color: white;
+
+            width: 36px;
+
+            height: 36px;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-weight: bold;
+
+            margin-right: 15px;
+
+            flex-shrink: 0;
+
+        }
+
+
+        .step-text {
+
+            flex: 1;
+
+        }
+
+
+        .step-text h3 {
+
+            color: var(--dark-green);
+
+            margin-bottom: 5px;
+
+        }
+
+
+        /* Data List */
+
+        .data-list {
+
+            list-style-type: none;
+
+        }
+
+
+        .data-list li {
+
+            padding: 0.8rem 0;
+
+            border-bottom: 1px solid #eee;
+
+            display: flex;
+
+            align-items: center;
+
+        }
+
+
+        .data-list li:last-child {
+
+            border-bottom: none;
+
+        }
+
+
+        .data-list i {
+
+            color: var(--orange);
+
+            margin-right: 12px;
+
+            font-size: 1.1rem;
+
+        }
+
+
+        /* Warning Box */
+
+        .warning-box {
+
+            background-color: #fff9e6;
+
+            border-left: 5px solid var(--orange);
+
+            padding: 1.2rem;
+
+            margin: 1.5rem 0;
+
+            border-radius: 0 8px 8px 0;
+
+        }
+
+
+        /* Contact Box */
+
+        .contact-box {
+
+            background: linear-gradient(to right, #fef8e7, #fff);
+
+            border: 1px solid #f1c40f;
+
+            padding: 1.5rem;
+
+            border-radius: 10px;
+
+            text-align: center;
+
+            margin-top: 2rem;
+
+        }
+
+
+        .contact-btn {
+
+            background-color: var(--dark-green);
+
+            color: white;
+
+            border: none;
+
+            padding: 12px 30px;
+
+            border-radius: 50px;
+
+            font-weight: 600;
+
+            font-size: 1rem;
+
+            cursor: pointer;
+
+            margin-top: 15px;
+
+            transition: background-color 0.3s, transform 0.2s;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+        }
+
+
+        .contact-btn:hover {
+
+            background-color: var(--orange);
+
+            transform: scale(1.05);
+
+        }
+
+
+        /* Footer */
+
+        footer {
+
+            background-color: var(--dark-green);
+
+            color: white;
+
+            padding: 2.5rem 0 1.5rem;
+
+            margin-top: 3rem;
+
+        }
+
+
+        .footer-content {
+
+            max-width: 1100px;
+
+            margin: 0 auto;
+
+            padding: 0 20px;
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            justify-content: space-between;
+
+        }
+
+
+        .footer-section {
+
+            flex: 1;
+
+            min-width: 250px;
+
+            margin-bottom: 1.5rem;
+
+        }
+
+
+        .footer-section h3 {
+
+            color: var(--orange);
+
+            margin-bottom: 1rem;
+
+            font-size: 1.3rem;
+
+        }
+
+
+        .footer-section p, .footer-section a {
+
+            color: #ddd;
+
+            text-decoration: none;
+
+            margin-bottom: 0.5rem;
+
+            display: block;
+
+        }
+
+
+        .footer-section a:hover {
+
+            color: var(--orange);
+
+        }
+
+
+        .copyright {
+
+            text-align: center;
+
+            padding-top: 1.5rem;
+
+            border-top: 1px solid rgba(255,255,255,0.1);
+
+            margin-top: 1rem;
+
+            color: #aaa;
+
+            font-size: 0.9rem;
+
+        }
+
+
+        /* Responsive Design */
+
+        @media (max-width: 768px) {
+
+            .header-container {
+
+                flex-direction: column;
+
+                gap: 15px;
+
+            }
+
+            
+
+            .nav-links {
+
+                flex-wrap: wrap;
+
+                justify-content: center;
+
+            }
+
+            
+
+            .footer-content {
+
+                flex-direction: column;
+
+            }
+
+            
+
+            .card-header {
+
+                font-size: 1.2rem;
+
+            }
+
+        }
+
+
+        /* Animation for steps */
+
+        .step {
+
+            opacity: 0;
+
+            transform: translateY(20px);
+
+            transition: opacity 0.5s, transform 0.5s;
+
+        }
+
+
+        .step.visible {
+
+            opacity: 1;
+
+            transform: translateY(0);
+
+        }
+
+
+        /* Highlight color for important text */
+
+        .highlight {
+
+            color: var(--orange);
+
+            font-weight: 600;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Header -->
+
+    <header>
+
+        <div class="header-container">
+
+            <div class="logo">
+
+                <i class="fas fa-hands-helping"></i>
+
+                <h1>Vimukti <span>Sanstha</span></h1>
+
+            </div>
+
+        
+
+        </div>
+
+    </header>
+
+
+    <!-- Main Content -->
+
+    <main class="container">
+
+        <h1 class="page-title">Data Deletion Request</h1>
+
+        
+
+        <!-- How to Delete Section -->
+
+        <section class="card">
+
+            <div class="card-header">
+
+                <i class="fas fa-trash-alt"></i>
+
+                How to Delete Your Data
+
+            </div>
+
+            <div class="card-content">
+
+                <p>Users of the Vimukti Sanstha Android application can delete their account and associated data by following the steps below:</p>
+
+                
+
+                <div class="steps-container">
+
+                    <div class="step">
+
+                        <div class="step-number">1</div>
+
+                        <div class="step-text">
+
+                            <h3>Open the Vimukti Sanstha mobile application</h3>
+
+                            <p>Launch the app on your Android device.</p>
+
+                        </div>
+
+                    </div>
+
+                    
+
+                    <div class="step">
+
+                        <div class="step-number">2</div>
+
+                        <div class="step-text">
+
+                            <h3>Log in to your account</h3>
+
+                            <p>Use your registered email ID and password to log in.</p>
+
+                        </div>
+
+                    </div>
+
+                    
+
+                    <div class="step">
+
+                        <div class="step-number">3</div>
+
+                        <div class="step-text">
+
+                            <h3>Go to the Profile page</h3>
+
+                            <p>After logging in, navigate to the Profile section.</p>
+
+                        </div>
+
+                    </div>
+
+                    
+
+                    <div class="step">
+
+                        <div class="step-number">4</div>
+
+                        <div class="step-text">
+
+                            <h3>Tap on the My Profile button</h3>
+
+                            <p>Access your profile details and settings.</p>
+
+                        </div>
+
+                    </div>
+
+                    
+
+                    <div class="step">
+
+                        <div class="step-number">5</div>
+
+                        <div class="step-text">
+
+                            <h3>Scroll to the bottom of the page</h3>
+
+                            <p>Find the account management options at the bottom.</p>
+
+                        </div>
+
+                    </div>
+
+                    
+
+                    <div class="step">
+
+                        <div class="step-number">6</div>
+
+                        <div class="step-text">
+
+                            <h3>Click on the Delete Account button</h3>
+
+                            <p>This will initiate the account deletion process.</p>
+
+                        </div>
+
+                    </div>
+
+                    
+
+                    <div class="step">
+
+                        <div class="step-number">7</div>
+
+                        <div class="step-text">
+
+                            <h3>Confirm the deletion when prompted</h3>
+
+                            <p>A confirmation dialog will appear to verify your decision.</p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                
+
+                <p>Once confirmed, your account and associated data will be permanently deleted.</p>
+
+            </div>
+
+        </section>
+
+        
+
+        <!-- Data That Will Be Deleted -->
+
+        <section class="card">
+
+            <div class="card-header">
+
+                <i class="fas fa-database"></i>
+
+                Data That Will Be Deleted
+
+            </div>
+
+            <div class="card-content">
+
+                <p>Upon account deletion, the following information will be removed from our systems:</p>
+
+                
+
+                <ul class="data-list">
+
+                    <li><i class="fas fa-user-circle"></i> <strong>User account information</strong> - Profile details, contact information, login credentials</li>
+
+                    <li><i class="fas fa-calendar-check"></i> <strong>Attendance records</strong> - All your attendance history</li>
+
+                    <li><i class="fas fa-map-marker-alt"></i> <strong>Location data</strong> linked to attendance</li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+        
+
+        <!-- Data Retention -->
+
+        <section class="card">
+
+            <div class="card-header">
+
+                <i class="fas fa-clock"></i>
+
+                Data Retention
+
+            </div>
+
+            <div class="card-content">
+
+                <div class="warning-box">
+
+                    <i class="fas fa-exclamation-triangle"></i>
+
+                    <strong>Important:</strong> Some data may be retained for legal or administrative purposes for up to <span class="highlight">90 days</span> after deletion.
+
+                </div>
+
+                <p>After this retention period, all remaining data will be permanently purged from our systems.</p>
+
+            </div>
+
+        </section>
+
+        
+
+        <!-- Contact Section -->
+
+        <section class="contact-box">
+
+            <h2><i class="fas fa-life-ring"></i> Need Assistance?</h2>
+
+            <p>If you encounter any issues during the deletion process or have questions about your data, please contact our app administrator.</p>
+
+            <button class="contact-btn" id="contactBtn">
+
+                <i class="fas fa-envelope"></i> Contact Through Official Website
+
+            </button>
+
+            <p style="margin-top: 15px; font-size: 0.9rem; color: #666;">
+
+                <strong>Note:</strong> This process is only applicable to users of the Vimukti Sanstha Android application.
+
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        <div class="footer-content">
+
+            <div class="footer-section">
+
+                <h3>Vimukti Sanstha</h3>
+
+    
+
+            </div>
+
+            
+
+            
+
+            <div class="footer-section">
+
+                <h3>Contact Us</h3>
+
+                <p><i class="fas fa-envelope"></i> info@vimuktisanstha.org</p>
+
+                <p><i class="fas fa-globe"></i> www.vimuktisanstha.org</p>
+
+            </div>
+
+        </div>
+
+        
+
+        <div class="copyright">
+
+            <p>&copy; 2023 Vimukti Sanstha. All rights reserved.</p>
+
+        </div>
+
+    </footer>
+
+
+    <script>
+
+        // Animate steps on scroll
+
+        document.addEventListener('DOMContentLoaded', function() {
+
+            const steps = document.querySelectorAll('.step');
+
+            
+
+            const observer = new IntersectionObserver((entries) => {
+
+                entries.forEach(entry => {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add('visible');
+
+                    }
+
+                });
+
+            }, { threshold: 0.1 });
+
+            
+
+            steps.forEach(step => {
+
+                observer.observe(step);
+
+            });
+
+            
+
+            // Contact button functionality
+
+            document.getElementById('contactBtn').addEventListener('click', function() {
+
+                alert('Redirecting to the official Vimukti Sanstha website contact page...');
+
+                // In a real implementation, this would redirect to the contact page
+
+                // window.location.href = 'https://www.vimuktisanstha.org/contact';
+
+            });
+
+            
+
+            // Add delay to step animations for sequential appearance
+
+            steps.forEach((step, index) => {
+
+                step.style.transitionDelay = `${index * 0.1}s`;
+
+            });
+
+        });
+
+    </script>
+
+</body>
+
+</html>
